@@ -1,0 +1,34 @@
+{
+  "name": "boosh",
+  "version": "0.1.0",
+  "description": "React, Webpack, hot loading. A somewhat reasonable starting point for building modern web apps.",
+  "license": "MIT",
+  "repository": "iansinnott/boosh",
+  "author": {
+    "name": "Ian Sinnott",
+    "email": "ian@iansinnott.com",
+    "url": "iansinnott.com"
+  },
+  "bin": "cli.js",
+  "engines": {
+    "node": ">=0.12.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "index.js",
+    "cli.js"
+  ],
+  "keywords": [
+    "cli-app",
+    "cli",
+    ""
+  ],
+  "dependencies": {
+    "meow": "^3.3.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.5"
+  }
+}
