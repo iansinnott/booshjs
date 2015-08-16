@@ -18,10 +18,12 @@ $ npm install --save booshjs
 
 ```js
 // webpack.config.js
+var path = require('path');
 var boosh = require('booshjs');
 module.exports = boosh({
   in: 'src/app.js',
-  out: 'public',
+  out: path.resolve(__dirname, 'public'),
+  isDev: true
 });
 ```
 
@@ -70,39 +72,18 @@ If true, Boosh.js will clear the directory specified by the `out` option every t
 
 ```
 module.exports = boosh({
-
-  // Boosh specific options
   in: null,
   out: null,
-  clearOnBuild: true,
-
-  // Webpack dev options
-  devtool: 'inline-source-map',
-  
+  cleanOnBuild: true,
 });
 ```
+
+Any standard Webpack arguments you supply will take precedence over the Boosh.js defaults.
 
 
 ## CLI Project Generator
 
-Boosh.js also let's you generate quick project boilerplates so that setting up a new project takes seconds.
-
-```
-$ npm install --global booshjs
-```
-```
-$ boosh --help
-
-  Usage
-    boosh [folder] [options]
-
-  Example
-    boosh new-project
-
-  Options
-    --todo  TODO: Write the options
-```
-
+TODO...
 
 ## License
 
