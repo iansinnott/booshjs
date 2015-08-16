@@ -1,4 +1,4 @@
-# boosh.js [![Build Status](https://travis-ci.org/iansinnott/boosh.svg?branch=master)](https://travis-ci.org/iansinnott/boosh)
+# boosh.js [![Circle CI](https://circleci.com/gh/iansinnott/booshjs.svg?style=svg)](https://circleci.com/gh/iansinnott/booshjs)
 
 A Webpack configuration generator and project boilerplate for building modern web applications
 
