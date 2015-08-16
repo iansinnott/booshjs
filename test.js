@@ -114,6 +114,28 @@ describe('boosh', function() {
     expect(config.entry).to.have.key('oh-hai');
   });
 
+  it('Can take a hash as input to the `in` parameter', function() {
+    var obj = {
+      in: {
+        ohHai: 'oh-hai.js',
+        login: 'src/login.js',
+      },
+      out: 'some/path/',
+      isDev: false,
+    };
+
+    var config = boosh(obj);
+
+    expect(config.entry).to.eql(obj.in);
+
+    obj.isDev = true;
+
+    config = boosh(obj);
+
+    expect(config.entry.ohHai).to.contain(obj.in.ohHai);
+    expect(config.entry.login).to.contain(obj.in.login);
+  });
+
   it('Should allow overwriting via standard webpack config', function() {
     var config = boosh({
       in: 'app.js',
