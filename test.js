@@ -3,11 +3,20 @@ var expect = require('chai').expect;
 var boosh = require('./');
 var getPackage = require('./lib/getPackage.js');
 var removeKeys = require('./lib/removeKeys.js');
+var filenameWithoutExt = require('./lib/filenameWithoutExt.js');
 
 describe('getPackage', function() {
   it('Should get package.json', function() {
     var pkg = getPackage();
     expect(pkg.name).to.equal('booshjs');
+  });
+});
+
+describe('filenameWithoutExt', function() {
+  it('Should return filenames without extensions', function() {
+    expect(filenameWithoutExt('path/to/file.html')).to.equal('file');
+    expect(filenameWithoutExt('./relative/path/to/something.js')).to.equal('something');
+    expect(filenameWithoutExt('/abs/path/to/something/else.clj')).to.equal('else');
   });
 });
 
@@ -47,25 +56,41 @@ describe('boosh', function() {
   };
 
   it('should throw when no config object is passed', function() {
-    expect(boosh).to.throw(Error, 'Expected a configuration object');
+    expect(boosh).to.throw(Error, 'Invariant Violation: Expected a configuration object.');
   });
 
   it('should throw when required options are not passed', function() {
-    var errMessage = 'Configuration object must have `in` and `out` properties.';
-
     expect(boosh.bind(boosh, {
       in: null,
       out: '/path/to/file',
-    })).to.throw(Error, errMessage);
+    })).to.throw(Error, 'Invariant Violation: Configuration object must have an `in` property.');
 
     expect(boosh.bind(boosh, {
       in: '/path/to/file',
       out: null,
-    })).to.throw(Error, errMessage);
+    })).to.throw(Error, 'Invariant Violation: Configuration object must have an `out` property.');
 
     expect(boosh.bind(boosh, {
       in: '/path/to/file',
       out: '/path/to/file',
+    })).to.not.throw();
+  });
+
+  it('Should accept entry and output as valid forms of in or out', function() {
+    expect(boosh.bind(boosh, {
+      entry: '/path/to/file',
+      out: '/path/to/file',
+    })).to.not.throw();
+
+    expect(boosh.bind(boosh, {
+      in: '/path/to/file',
+      output: '/path/to/file',
+    })).to.not.throw();
+
+    expect(boosh.bind(boosh, {
+      entry: '/path/to/file',
+      output: '/path/to/file',
+      isDev: true,
     })).to.not.throw();
   });
 
@@ -77,6 +102,35 @@ describe('boosh', function() {
     expect(config.isDev).to.be.undefined;
     expect(config.entry).to.be.ok;
     expect(config.output).to.be.ok;
+  });
+
+  it('Should base input keys on filenames', function() {
+    var config = boosh({
+      in: 'oh-hai.js',
+      out: 'some/path/',
+      isDev: false,
+    });
+
+    expect(config.entry).to.have.key('oh-hai');
+  });
+
+  it('Should allow overwriting via standard webpack config', function() {
+    var config = boosh({
+      in: 'app.js',
+      out: 'some/path/',
+      isDev: true,
+    });
+
+    expect(config.entry.app).to.be.instanceOf(Array);
+
+    config = boosh({
+      out: 'bleh',
+      entry: {
+        app: 'some/thang.js',
+      },
+    });
+
+    expect(config.entry.app).to.equal('some/thang.js');
   });
 });
 
