@@ -1,9 +1,9 @@
 {
-  "name": "boosh",
+  "name": "booshjs",
   "version": "0.1.0",
   "description": "React, Webpack, hot loading. A somewhat reasonable starting point for building modern web apps.",
   "license": "MIT",
-  "repository": "iansinnott/boosh",
+  "repository": "iansinnott/booshjs",
   "author": {
     "name": "Ian Sinnott",
     "email": "ian@iansinnott.com",
@@ -22,9 +22,11 @@
     "cli.js"
   ],
   "keywords": [
-    "cli-app",
-    "cli",
-    ""
+    "react",
+    "webpack",
+    "react-hot-loader",
+    "boosh",
+    "cli"
   ],
   "dependencies": {
     "axis": "^0.4.2",
