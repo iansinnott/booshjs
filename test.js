@@ -7,7 +7,7 @@ var removeKeys = require('./lib/removeKeys.js');
 describe('getPackage', function() {
   it('Should get package.json', function() {
     var pkg = getPackage();
-    expect(pkg.name).to.equal('boosh');
+    expect(pkg.name).to.equal('booshjs');
   });
 });
 
