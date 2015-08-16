@@ -9,7 +9,9 @@
     "email": "ian@iansinnott.com",
     "url": "iansinnott.com"
   },
-  "bin": "cli.js",
+  "bin": {
+    "boosh": "./cli.js"
+  },
   "engines": {
     "node": ">=0.12"
   },
