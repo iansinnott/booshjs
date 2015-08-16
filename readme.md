@@ -1,28 +1,38 @@
-# boosh [![Build Status](https://travis-ci.org/iansinnott/boosh.svg?branch=master)](https://travis-ci.org/iansinnott/boosh)
+# boosh.js [![Build Status](https://travis-ci.org/iansinnott/boosh.svg?branch=master)](https://travis-ci.org/iansinnott/boosh)
 
-> My legendary module
+A Webpack configuration generator and project boilerplate for building modern web applications
 
+This project is an evolution of my old [React + Webpack boilerplate][]. I was further inspired to make this into its own module by [hjs-webpack][].
+
+[React + Webpack boilerplate]: https://github.com/iansinnott/react-boilerplate
+[hjs-webpack]: https://github.com/HenrikJoreteg/hjs-webpack/
 
 ## Install
 
 ```
-$ npm install --save boosh
+$ npm install --save booshjs
 ```
 
 
 ## Usage
 
 ```js
-var boosh = require('boosh');
+// webpack.config.js
+var boosh = require('booshjs');
 module.exports = boosh({
   in: 'src/app.js',
   out: 'public',
 });
 ```
 
-## Options
 
-### `in`
+## API
+
+### boosh([options])
+
+### options
+
+#### `in`
 
 **Type:** string, array, object
 **Default:** `null`
@@ -44,19 +54,19 @@ The path to the main entry point of your application or a configuration object s
 }
 ```
 
-### `out`
+#### `out`
 
 **Type:** string
 **Default:** `null`
 
-### `cleanOnBuild`
+#### `cleanOnBuild`
 
 **Type:** boolean
 **Default:** `true`
 
 If true, Boosh.js will clear the directory specified by the `out` option every time you build. This is recommended, as it encourages keeping source files and generated files separate.
 
-### Defaults
+#### Defaults
 
 ```
 module.exports = boosh({
@@ -65,57 +75,33 @@ module.exports = boosh({
   in: null,
   out: null,
   clearOnBuild: true,
-  eslintConfig: './.eslintrc',
 
   // Webpack dev options
   devtool: 'inline-source-map',
   
-  // TOOD: finish writing this
 });
 ```
 
-## CLI
+
+## CLI Project Generator
+
+Boosh.js also let's you generate quick project boilerplates so that setting up a new project takes seconds.
 
 ```
-$ npm install --global boosh
+$ npm install --global booshjs
 ```
 ```
 $ boosh --help
 
   Usage
-    boosh [input]
+    boosh [folder] [options]
 
   Example
-    boosh
-    unicorns & rainbows
-
-    boosh ponies
-    ponies & rainbows
+    boosh new-project
 
   Options
-    --foo  Lorem ipsum. Default: false
+    --todo  TODO: Write the options
 ```
-
-
-## API
-
-### boosh(input, [options])
-
-#### input
-
-*Required*  
-Type: `string`
-
-Lorem ipsum.
-
-#### options
-
-##### foo
-
-Type: `boolean`  
-Default: `false`
-
-Lorem ipsum.
 
 
 ## License
