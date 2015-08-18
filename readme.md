@@ -1,4 +1,8 @@
-# boosh.js [![Circle CI](https://circleci.com/gh/iansinnott/booshjs.svg?style=svg)](https://circleci.com/gh/iansinnott/booshjs)
+# boosh.js 
+
+[![Circle CI](https://img.shields.io/circleci/project/iansinnott/booshjs.svg)](https://circleci.com/gh/iansinnott/booshjs)
+[![Boosh.js on NPM](https://img.shields.io/npm/v/booshjs.svg)](https://www.npmjs.com/package/booshjs)
+
 
 A Webpack configuration generator and project boilerplate for building modern web applications
 
