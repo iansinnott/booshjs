@@ -1,4 +1,10 @@
 /* globals describe,it,before */
+
+// Quick polyfill
+if (!Object.assign) {
+  Object.assign = require('lodash.assign');
+}
+
 var expect = require('chai').expect;
 var boosh = require('./');
 var getPackage = require('./lib/getPackage.js');
@@ -102,6 +108,16 @@ describe('boosh', function() {
     expect(config.isDev).to.be.undefined;
     expect(config.entry).to.be.ok;
     expect(config.output).to.be.ok;
+  });
+
+  it('Should pass the https param in to dev server', function() {
+    var config = boosh(Object.assign({}, validConfig, { https: true }));
+    expect(config.devServer.https).to.be.true;
+  });
+
+  it('Should pass the port param in to dev server', function() {
+    var config = boosh(Object.assign({}, validConfig, { port: 1234 }));
+    expect(config.devServer.port).to.equal(1234);
   });
 
   it('Should base input keys on filenames', function() {
