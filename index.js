@@ -18,6 +18,8 @@ var customArgs = [
   'out',
   'cleanOnBuild',
   'isDev',
+  'https',
+  'port',
 ];
 
 function validateConfig(config) {
