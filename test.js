@@ -61,11 +61,11 @@ describe('boosh', function() {
     isDev: true,
   };
 
-  it('should throw when no config object is passed', function() {
+  it('Should throw when no config object is passed', function() {
     expect(boosh).to.throw(Error, 'Invariant Violation: Expected a configuration object.');
   });
 
-  it('should throw when required options are not passed', function() {
+  it('Should throw when required options are not passed', function() {
     expect(boosh.bind(boosh, {
       in: null,
       out: '/path/to/file',
