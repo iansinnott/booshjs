@@ -1,6 +1,6 @@
 {
   "name": "booshjs",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "React, Webpack, hot loading. A somewhat reasonable starting point for building modern web apps.",
   "license": "MIT",
   "repository": {
