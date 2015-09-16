@@ -20,6 +20,7 @@ var customArgs = [
   'isDev',
   'https',
   'port',
+  'define',
 ];
 
 function validateConfig(config) {
