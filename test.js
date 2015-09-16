@@ -101,11 +101,23 @@ describe('boosh', function() {
   });
 
   it('Should not export an object with custom options defined', function() {
-    var config = boosh(validConfig);
+    var config = boosh({
+      in: '/path/to/file',
+      out: '/path/to/file',
+      cleanOnBuild: true,
+      isDev: true,
+      https: true,
+      port: 8888,
+      define: { something: 'else' },
+    });
 
     expect(config.in).to.be.undefined;
     expect(config.out).to.be.undefined;
     expect(config.isDev).to.be.undefined;
+    expect(config.cleanOnBuild).to.be.undefined;
+    expect(config.https).to.be.undefined;
+    expect(config.port).to.be.undefined;
+    expect(config.define).to.be.undefined;
     expect(config.entry).to.be.ok;
     expect(config.output).to.be.ok;
   });
